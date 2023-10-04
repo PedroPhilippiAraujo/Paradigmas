@@ -11,14 +11,15 @@ def choice(linha,coluna):
     regiaocel = gridregiao[linha][coluna]
     for i in range(1, tamanhoregioes[regiaocel-1]+1):
         if ((coluna == 0) or (i != grid[linha][coluna-1])) and ((coluna == tamanhogrid-1 or i != grid[linha][coluna+1])):
-            if ((linha == 0) or (i < grid[linha-1][coluna])) and ((linha == tamanhogrid-1) or (regiaocel = gridregiao[linha+1][coluna] and i > grid[linha+1][coluna])):
-                grid[linha][coluna] = i
-                if linha != tamanhogrid-1 and coluna != tamanhogrid-1:
-                    choice(linha,coluna+1)
-                elif linha != tamanhogrid-1 and coluna == tamanhogrid-1:
-                    choice(linha+1, 0)
-                else:
-                    break
+            if (linha == 0) or (regiaocel == gridregiao[linha-1][coluna] and i < grid[linha-1][coluna]) or  (regiaocel != gridregiao[linha-1][coluna] and i != grid[linha-1][coluna]):
+                if (linha == tamanhogrid-1) or (regiaocel == gridregiao[linha+1][coluna] and i > grid[linha+1][coluna]) or (regiaocel != gridregiao[linha+1][coluna] and i != grid[linha+1][coluna]):
+                    grid[linha][coluna] = i
+                    if linha != tamanhogrid-1 and coluna != tamanhogrid-1:
+                        choice(linha,coluna+1)
+                    elif linha != tamanhogrid-1 and coluna == tamanhogrid-1:
+                        choice(linha+1, 0)
+                    else:
+                        break
     
                 
             
