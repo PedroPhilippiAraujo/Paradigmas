@@ -1,3 +1,5 @@
+%https://rachacuca.com.br/logica/problemas/compras-do-mes-ii/
+
 blusa(amarela).
 blusa(azul).
 blusa(branca).
@@ -102,70 +104,28 @@ solucao(ListaSolucao) :-
     Blusa4 = azul,
     
     %Em um dos caixas da pontas está a mulher que foi ao supermercado com o Marido.
+    noCanto(caixa(_,_,_,_,marido,_), ListaSolucao),
     
     %A mulher da blusa Verde está em algum lugar à esquerda da de blusa Vermelha.
+    aEsquerda(caixa(verde,_,_,_,_,_), caixa(vermelha,_,_,_,_,_), ListaSolucao),
     
     %No caixa da quarta posição está a mulher que vai pagar com Cheque.
-    
-    %A mulher da blusa Verde está em algum lugar à esquerda da de blusa Vermelha.
+    Pagamento4 = cheque,
     
     %Quem vai pagar com Dinheiro está em um dos caixas das pontas.
+    noCanto(caixa(_,_,_,dinheiro_,_), ListaSolucao),
     
     %Quem esqueceu as Frutas está ao lado de quem esqueceu o Presunto.
+    aoLado(caixa(_,_,frutas,_,_,_), caixa(_,_,presunto,_,_,_), ListaSolucao),
     
     %A mulher que vai pagar com o cartão de Débito está exatamente à esquerda de quem vai pagar com Vale.
+    %aesquerda+aolado.
     
     %A mulher da blusa Amarela está em algum lugar entre a que foi com o Marido e a de blusa Verde, nessa ordem.
     %adireita+aesquerda
     
     %Quem vai pagar com Dinheiro está ao lado de quem foi de Sedan ao supermercado.
-    
-    %-------------------------------------------------------------------
-    
-    %O navio Grego sai às 6 da manhã e carrega Café.
-    member(navio(grego, 6, cafe, _, _), ListaSolucao),
-
-    %O navio do meio tem a chaminé Preta.
-    Chamine3 = preta,
-    
-    %O navio Inglês sai às 9 da manhã.
-    member(navio(ingles, 9, _, _, _), ListaSolucao),
-    
-    %O navio Francês, que tem a chaminé Azul, está à esquerda do navio que carrega Café
-    aEsquerda(navio(frances, _, _, azul, _), navio(_, _, cafe, _, _), ListaSolucao),
-    
-    %À direita do navio que carrega Cacau está o navio que vai para Macau.
-    aEsquerda(navio(_, _, cacau, _, _), navio(_, _, _, _, macau), ListaSolucao),
-    
-    %O navio Brasileiro está indo para Manila.
-    member(navio(brasileiro, _, _, _, manila), ListaSolucao),
-    
-    %O navio que carrega Arroz está ancorado ao lado do navio com chaminé Verde.
-    aoLado(navio(_, _, arroz, _, _), navio(_, _, _, verde, _), ListaSolucao),
-    
-    %O navio que vai para Santos sai às 5 da manhã.
-    member(navio(_, 5, _, _, santos), ListaSolucao),
-    
-    %O navio Espanhol sai às 7 da manhã e está à direita do navio que vai para Macau.
-    aDireita(navio(espanhol, 7, _, _, _), navio(_, _, _, _, macau), ListaSolucao),
-    
-    %O navio com a chaminé Vermelha vai para Hamburgo.
-    member(navio(_, _, _, vermelha, hamburgo), ListaSolucao),
-    
-    %O navio que sai às 7 da manhã está ao lado do navio que tem a chaminé Branca.
-    aoLado(navio(_, 7, _, _, _), navio(_, _, _, branca, _), ListaSolucao),
-    
-    %O navio do canto carrega Milho.
-    noCanto(navio(_, _, milho, _, _),ListaSolucao),
-    
-    %O navio com chaminé Preta sai às 8 da manhã
-    member(navio(_, 8, _, preta, _), ListaSolucao),
-    
-    %O navio que que carrega Milho está ancorado ao lado do navio que carrega Arroz.
-    aoLado(navio(_, _, milho, _, _), navio(_, _, arroz, _, _), ListaSolucao),
-    
-    %O navio que vai para Hamburgo sai às 6 da manhã.
-    member(navio(_, 6, _, _, hamburgo), ListaSolucao),
+    aoLado(caixa(_,_,_,dinheiro,_,_), caixa(_,_,_,_,_,sedan), ListaSolucao),
     
     %Testa todas as possibilidades...
     blusa(Blusa1), blusa(Blusa2), blusa(Blusa3), blusa(Blusa4), blusa(Blusa5),
@@ -185,4 +145,4 @@ solucao(ListaSolucao) :-
 
 	carro(Carro1), carro(Carro2), carro(Carro3), carro(Carro4), carro(Carro5),
     todosDiferentes([Carro1, Carro2, Carro3, Carro4, Carro5]).
-    
+
