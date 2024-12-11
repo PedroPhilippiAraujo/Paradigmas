@@ -143,6 +143,6 @@ solucao(ListaSolucao) :-
     foicom(Foicom1), foicom(Foicom2), foicom(Foicom3), foicom(Foicom4), foicom(Foicom5),
     todosDiferentes([Foicom1, Foicom2, Foicom3, Foicom4, Foicom5]),
 
-	carro(Carro1), carro(Carro2), carro(Carro3), carro(Carro4), carro(Carro5),
+    carro(Carro1), carro(Carro2), carro(Carro3), carro(Carro4), carro(Carro5),
     todosDiferentes([Carro1, Carro2, Carro3, Carro4, Carro5]).
 
