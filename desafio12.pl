@@ -1,5 +1,6 @@
+%Pedro Philippi Araujo 21204555
 %https://rachacuca.com.br/logica/problemas/compras-do-mes-ii/
-
+%video: https://youtu.be/6fO3qSClg5A
 blusa(amarela).
 blusa(azul).
 blusa(branca).
